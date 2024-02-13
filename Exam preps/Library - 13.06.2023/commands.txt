@@ -1,0 +1,25 @@
+docker build -t library -f Library\Dockerfile .
+
+az login
+
+az group create --name ertan40libraryrg --location westeurope   # create resource group
+
+az acr create --resource-group ertan40libraryrg --name ertan40librarycr --sku Basic    # taken from loginserver: ertan40librarycr.azurecr.io after this command
+
+docker build -t ertan40librarycr.azurecr.io/library -f Library\Dockerfile .
+
+az acr login --name ertan40librarycr   # login successed
+
+docker push ertan40librarycr.azurecr.io/library
+
+docker context ls
+
+docker context create aci librarycontext    # pick the propergroup  : ertan40libraryrg (westeurope) Successfully created aci context "librarycontext"
+
+docker context use librarycontext     # librarycontext
+
+docker-compose up -d
+
+# if everything is working properly you have access to your uploaded app on:
+ertan40.westeurope.azurecontainer.io
+# it can be found on resource group -> container instances -> FQDN
