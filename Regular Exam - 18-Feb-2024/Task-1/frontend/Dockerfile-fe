@@ -1,0 +1,16 @@
+#start from the latest NODE image
+FROM node
+
+#Set the working directory
+WORKDIR /app
+
+#Copy all the frontend files inside the docker container
+COPY . .
+
+#install the package.json dependencies
+RUN npm install 
+
+#Specify the exposed port
+EXPOSE 3000
+
+CMD [ "npm", "start" ]

@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+    mongodb:
+      environment:
+          - MONGO_INITDB_ROOT_USERNAME=max
+          - MONGO_INITDB_ROOT_PASSWORD=secret
+      volumes:
+          - data:/data/db
+      image: mongo
+      networks:
+        - list
+    backend:
+      volumes:
+        - logs:/logs
+        - node_modules:/node_modules
+      ports:
+        - 80:80
+      networks:
+        - list
+      image: ertan40/list-backend 
+    frontend:
+      networks: 
+        - list
+      volumes:
+          - ./frontend/src:/src
+      ports:
+          - 3001:3000
+      image: ertan40/list-frontend
+networks:
+    list:
+volumes:
+    data:
+    logs:
+    node_modules:
