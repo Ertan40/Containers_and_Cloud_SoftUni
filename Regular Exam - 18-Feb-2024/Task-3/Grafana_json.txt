@@ -1,0 +1,75 @@
+{
+  "datasource": {
+    "uid": "f71742c7-8984-435c-91d8-8492d42030cb",
+    "type": "prometheus"
+  },
+  "type": "histogram",
+  "title": "Panel Title",
+  "gridPos": {
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 8
+  },
+  "id": 1,
+  "targets": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "f71742c7-8984-435c-91d8-8492d42030cb"
+      },
+      "refId": "A",
+      "expr": "probe_http_duration_seconds",
+      "range": true,
+      "instant": false,
+      "editorMode": "builder",
+      "legendFormat": "__auto",
+      "useBackend": false,
+      "disableTextWrap": false,
+      "fullMetaSearch": false,
+      "includeNullMetadata": true
+    }
+  ],
+  "options": {
+    "bucketOffset": 0,
+    "legend": {
+      "showLegend": true,
+      "displayMode": "list",
+      "placement": "bottom",
+      "calcs": []
+    }
+  },
+  "fieldConfig": {
+    "defaults": {
+      "custom": {
+        "lineWidth": 1,
+        "fillOpacity": 80,
+        "gradientMode": "none",
+        "hideFrom": {
+          "tooltip": false,
+          "viz": false,
+          "legend": false
+        }
+      },
+      "unitScale": true,
+      "color": {
+        "mode": "thresholds"
+      },
+      "mappings": [],
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "value": null,
+            "color": "green"
+          },
+          {
+            "value": 80,
+            "color": "red"
+          }
+        ]
+      }
+    },
+    "overrides": []
+  }
+}
