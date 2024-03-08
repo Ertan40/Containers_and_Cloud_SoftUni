@@ -1,2 +1,2 @@
 # Containers_and_Cloud_SoftUni
- Initial commit
+ This repository stores the course demos and exams that I had.
